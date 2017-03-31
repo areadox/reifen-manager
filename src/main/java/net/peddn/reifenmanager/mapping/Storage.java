@@ -5,6 +5,8 @@
  */
 package net.peddn.reifenmanager.mapping;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -25,8 +27,12 @@ public class Storage {
     @Reference
     private Customer customer;
     
+    @Reference
+    private List<Tire> tires;
+    
     public Storage(String storageNumber) {
         this.storageNumber = storageNumber;
+        this.tires = new ArrayList();
     }
 
     public String getStorageNumber() {
@@ -44,8 +50,9 @@ public class Storage {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-    
-    
-    
-    
+
+    public List<Tire> getTires() {
+        return tires;
+    }
+ 
 }
